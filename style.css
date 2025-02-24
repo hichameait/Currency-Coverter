@@ -67,9 +67,12 @@ body {
 .from  select, .to select {
   width: 20%;
   height: 19px;
+  color: black;
   border: 1px solid #c9c9c9;
   border-radius: 25px;
-  padding: 10px;
+}
+#from-country option, #to-country option{
+  color: black;
 }
 .switcher {
   width: 50px;
