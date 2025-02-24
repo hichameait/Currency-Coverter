@@ -1,5 +1,5 @@
 const url = "https://api.freecurrencyapi.com/v1/currencies";
-const apikey = "fca_live_3nsDhSeIdfailQYFqEX955q8nDHYCKePl8Hbx78G";
+const apikey = "";
 const options = {
   method: "GET",
   headers: {
