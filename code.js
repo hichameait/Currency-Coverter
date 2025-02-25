@@ -53,25 +53,7 @@ function name(params) {
 }
 get_countries();
 
-// get_converter("MAD", "USD");
 
-function changer(){
-  const fromNum = parseFloat(document.getElementById("from-input").value);
-  const fromSelect = document.getElementById("from-country").value;
-  const toSelect = document.getElementById("to-country").value;
-  const toNumber = document.getElementById("to-input");
-
-  if (fromNum === 0) {
-    return
-  }
-
-  get_converter(fromSelect, toSelect).then(result => {
-    const rez = fromNum * result;
-    toNumber.value = rez;
-    toNumber.textContent = rez;
-  });
-
-}
 window.onload = () => {
   const fromSelect = document.getElementById("from-country").value;
   const toSelect = document.getElementById("to-country").value;
@@ -82,29 +64,10 @@ window.onload = () => {
   const img2 = document.getElementById("imgTo")
   img2.src = `https://hatscripts.github.io/circle-flags/flags/${toSelect.substring(0, 2)}.svg`
 
-  // if (fromSelect === toSelect || toSelect === fromSelect ) {
-  //   document.getElementById("").style.visibility = "hidden"
-  // }
-
 };
 
-document.getElementById("from-input").addEventListener('change', () => {
 
-  const fromNum = parseFloat(document.getElementById("from-input").value);
-  const fromSelect = document.getElementById("from-country").value;
-  const toSelect = document.getElementById("to-country").value;
-  const toNumber = document.getElementById("to-input");
-
-  get_converter(fromSelect, toSelect).then(result => {
-    const rez = fromNum * result;
-    toNumber.value = rez;
-    toNumber.textContent = rez;
-  });
-
-});
-
-document.getElementById("from-country").addEventListener('change', () => {
-
+function from_changer(){
   const fromNum = parseFloat(document.getElementById("from-input").value);
   const fromSelect = document.getElementById("from-country").value;
   const toSelect = document.getElementById("to-country").value;
@@ -124,34 +87,15 @@ document.getElementById("from-country").addEventListener('change', () => {
     toNumber.textContent = rez;
   });
 
-});
-document.getElementById("to-input").addEventListener('change', () => {
-
-  const fromNum = parseFloat(document.getElementById("from-input").value);
-  const fromSelect = document.getElementById("from-country").value;
-  const toSelect = document.getElementById("to-country").value;
-  const toNumber = document.getElementById("to-input");
-  if (fromNum === 0 || toNumber === 0 ) {
-    return
-  }
-  get_converter(toSelect, fromSelect).then(result => {
-    const rez = fromNum * result;
-    document.getElementById("p-ex").textContent = `1 ${fromSelect} = ${result} ${toSelect}`
-    document.getElementById("p-ex").visibility = "visible !important"
-    toNumber.value = rez;
-    toNumber.textContent = rez;
-  });
-
-});
-document.getElementById("to-country").addEventListener('change', () => {
-
+}
+function to_changer(){
   const fromNum = parseFloat(document.getElementById("from-input").value);
   const fromSelect = document.getElementById("from-country").value;
   const toSelect = document.getElementById("to-country").value;
   const toNumber = document.getElementById("to-input");
   const img2 = document.getElementById("imgTo")
   img2.src = `https://hatscripts.github.io/circle-flags/flags/${toSelect.substring(0, 2)}.svg`
-  
+
   if (fromNum === 0 || toNumber === 0 ) {
     return
   }
@@ -162,10 +106,18 @@ document.getElementById("to-country").addEventListener('change', () => {
     toNumber.value = rez;
     toNumber.textContent = rez;
   });
+}
 
-});
+const fromNumElement = document.getElementById("from-input");
+const fromSelectElement = document.getElementById("from-country");
+const toSelectElement = document.getElementById("to-country");
+const toNumberElement = document.getElementById("to-input");
 
+fromNumElement.addEventListener('change', from_changer);
+fromNumElement.addEventListener('keyup', from_changer);
+fromSelectElement.addEventListener('change', from_changer);
 
- 
-  // document.getElementById("from-country").addEventListener('change', changer());
+toSelectElement.addEventListener('change', to_changer);
+toNumberElement.addEventListener('keyup', to_changer);
+toNumberElement.addEventListener('change', to_changer);
 
