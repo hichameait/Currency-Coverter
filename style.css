@@ -6,7 +6,9 @@
   margin: 0;
 }
 
-
+.p-ex {
+  visibility: hidden;
+}
 
 body {
   width: 100%;

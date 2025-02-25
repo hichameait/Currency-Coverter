@@ -82,6 +82,10 @@ window.onload = () => {
   const img2 = document.getElementById("imgTo")
   img2.src = `https://hatscripts.github.io/circle-flags/flags/${toSelect.substring(0, 2)}.svg`
 
+  // if (fromSelect === toSelect || toSelect === fromSelect ) {
+  //   document.getElementById("").style.visibility = "hidden"
+  // }
+
 };
 
 document.getElementById("from-input").addEventListener('change', () => {
@@ -108,9 +112,14 @@ document.getElementById("from-country").addEventListener('change', () => {
   const img1 = document.getElementById("imgForm")
 
   img1.src = `https://hatscripts.github.io/circle-flags/flags/${fromSelect.substring(0, 2)}.svg`
-
+  if (fromNum === 0 || toNumber === 0 ) {
+    return
+  }
+  
   get_converter(fromSelect, toSelect).then(result => {
     const rez = fromNum * result;
+    document.getElementById("p-ex").textContent = `1 ${fromSelect} = ${result} ${toSelect}`
+    document.getElementById("p-ex").visibility = "visible !important"
     toNumber.value = rez;
     toNumber.textContent = rez;
   });
@@ -122,9 +131,13 @@ document.getElementById("to-input").addEventListener('change', () => {
   const fromSelect = document.getElementById("from-country").value;
   const toSelect = document.getElementById("to-country").value;
   const toNumber = document.getElementById("to-input");
-
+  if (fromNum === 0 || toNumber === 0 ) {
+    return
+  }
   get_converter(toSelect, fromSelect).then(result => {
     const rez = fromNum * result;
+    document.getElementById("p-ex").textContent = `1 ${fromSelect} = ${result} ${toSelect}`
+    document.getElementById("p-ex").visibility = "visible !important"
     toNumber.value = rez;
     toNumber.textContent = rez;
   });
@@ -139,8 +152,13 @@ document.getElementById("to-country").addEventListener('change', () => {
   const img2 = document.getElementById("imgTo")
   img2.src = `https://hatscripts.github.io/circle-flags/flags/${toSelect.substring(0, 2)}.svg`
   
+  if (fromNum === 0 || toNumber === 0 ) {
+    return
+  }
   get_converter(toSelect, fromSelect).then(result => {
     const rez = fromNum * result;
+    document.getElementById("p-ex").textContent = `1 ${fromSelect} = ${result} ${toSelect}`
+    document.getElementById("p-ex").visibility = "visible !important"
     toNumber.value = rez;
     toNumber.textContent = rez;
   });
