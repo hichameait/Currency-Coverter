@@ -26,20 +26,23 @@ async function get_countries() {
     const data = await res.json();
 
     for (let [key] of Object.entries(data)) {
-      const flag_emoji = String.fromCodePoint(
-        ...[...key.substring(0, 2)].map((c) => c.charCodeAt(0) + 127397)
-      );
+      // const flag_emoji = String.fromCodePoint(
+      //   ...[...key.substring(0, 2)].map((c) => c.charCodeAt(0) + 127397)
+      // );
 
+      // const option1 = document.createElement("option");
       const option1 = document.createElement("option");
       option1.value = key.toLowerCase();
-      option1.textContent = `${flag_emoji} ${key}`;
-
+      option1.textContent = `${key}`;
+      // https://hatscripts.github.io/circle-flags/flags/${key.substring(0, 2)}.svg
       const option2 = document.createElement("option");
       option2.value = key.toLowerCase();
-      option2.textContent = `${flag_emoji} ${key}`;
+      option2.textContent = `${key}`;
 
       to_list.appendChild(option1);
       get_list.appendChild(option2);
+
+
     }
   } catch (error) {
     console.log(error);
@@ -69,6 +72,17 @@ function changer(){
   });
 
 }
+window.onload = () => {
+  const fromSelect = document.getElementById("from-country").value;
+  const toSelect = document.getElementById("to-country").value;
+
+  const img1 = document.getElementById("imgForm")
+  img1.src = `https://hatscripts.github.io/circle-flags/flags/${fromSelect.substring(0, 2)}.svg`
+
+  const img2 = document.getElementById("imgTo")
+  img2.src = `https://hatscripts.github.io/circle-flags/flags/${toSelect.substring(0, 2)}.svg`
+
+};
 
 document.getElementById("from-input").addEventListener('change', () => {
 
@@ -91,6 +105,9 @@ document.getElementById("from-country").addEventListener('change', () => {
   const fromSelect = document.getElementById("from-country").value;
   const toSelect = document.getElementById("to-country").value;
   const toNumber = document.getElementById("to-input");
+  const img1 = document.getElementById("imgForm")
+
+  img1.src = `https://hatscripts.github.io/circle-flags/flags/${fromSelect.substring(0, 2)}.svg`
 
   get_converter(fromSelect, toSelect).then(result => {
     const rez = fromNum * result;
@@ -119,7 +136,9 @@ document.getElementById("to-country").addEventListener('change', () => {
   const fromSelect = document.getElementById("from-country").value;
   const toSelect = document.getElementById("to-country").value;
   const toNumber = document.getElementById("to-input");
-
+  const img2 = document.getElementById("imgTo")
+  img2.src = `https://hatscripts.github.io/circle-flags/flags/${toSelect.substring(0, 2)}.svg`
+  
   get_converter(toSelect, fromSelect).then(result => {
     const rez = fromNum * result;
     toNumber.value = rez;

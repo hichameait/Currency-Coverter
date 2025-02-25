@@ -6,6 +6,8 @@
   margin: 0;
 }
 
+
+
 body {
   width: 100%;
   min-height: 100vh;
@@ -64,16 +66,36 @@ body {
   border-radius: 25px;
   padding: 10px;
 }
-.from  select, .to select {
+/* .from  select, .to select {
   width: 20%;
   height: 19px;
   color: black;
   border: 1px solid #c9c9c9;
   border-radius: 25px;
+} */
+.selection {
+  width: 20%;
+  height: 26px;
+  color: black;
+  border: 1px solid #c9c9c9;
+  border-radius: 25px;
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-evenly;
 }
+
+.selection select{
+  width: 70%;
+  outline: none;
+  border: none;
+}
+
 #from-country option, #to-country option{
   color: black;
 }
+
 .switcher {
   width: 50px;
   height: 8px;
