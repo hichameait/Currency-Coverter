@@ -120,7 +120,7 @@ function from_changer(){
       console.log("Error getting the results , please contact support")
       return
     }
-    const rez = fromNum * result;
+    let rez = fromNum * result;
     document.getElementById("p-ex").textContent = `1 ${fromSelect} = ${result} ${toSelect}`
     document.getElementById("p-ex").style.visibility = "visible";
 
@@ -129,18 +129,19 @@ function from_changer(){
       console.error('Error: Result is not a valid number:', result);
       return;
     }
-    toNumber.value = rez;
-    toNumber.textContent = rez;
+    toNumber.value = rez.toFixed(2);
+    toNumber.textContent = rez.toFixed(2);
   });
 
 }
 function swaper(){
   let oldest = document.getElementById("from-country").value
   let oldnum = parseFloat(document.getElementById("from-input").value)
+  let tonum = parseFloat(document.getElementById("to-input").value)
   document.getElementById("from-country").value = document.getElementById("to-country").value
   document.getElementById("to-country").value = oldest
-  document.getElementById("from-input").value = document.getElementById("to-input").value
-  document.getElementById("to-input").value = oldnum; 
+  document.getElementById("from-input").value = tonum.toFixed(2)
+  document.getElementById("to-input").value = oldnum.toFixed(2); 
   from_changer()
 }
 function to_changer(){
@@ -172,8 +173,8 @@ function to_changer(){
 
     document.getElementById("p-ex").textContent = `1 ${fromSelect} = ${result} ${toSelect}`;
     document.getElementById("p-ex").style.visibility = "visible";
-    toNumber.value = rez;
-    toNumber.textContent = rez;
+    toNumber.value = rez.toFixed(2);
+    toNumber.textContent = rez.toFixed(2);
   });
 }
 
